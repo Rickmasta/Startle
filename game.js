@@ -229,6 +229,7 @@ displayResults(gameResults);
 const newGameButton = document.getElementById("newGame");
 
 newGameButton.onclick = function(){
+   window.scrollTo({ top: 0, behavior: 'smooth' })
    location.reload();
 };
 
