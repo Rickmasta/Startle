@@ -22,6 +22,11 @@ function playGame() {
         gamesResults.push(playRound(roundWord,startingWord));
         console.log(`Round Over. Word was ${roundWord}`);
     }
+
+    if (!checkIfSovable(startingWord, [roundWords, gamesResults])) {
+        console.log(`Not all letters included in answers - redoing game.`)
+        return playGame();
+    }
     return [roundWords, gamesResults];
 }
 
@@ -154,12 +159,40 @@ function checkAnswer(roundWord, guessWord) {
     return [results,resultsArray];
 }
 
+function checkIfSovable(startingWord, results) {
+    let words = results[0];
+    let letterBank = [];
+    let letterBankincludesAll = true;
+
+    //Add all characters of all words from each round into a letter bank 
+    for (w=0;w<words.length;w++) {
+        for(c=0; c<words[w].length;c++) {
+            letterBank.push(words[w][c]);
+        }
+    }
+
+    //Check if all characters are in the letterbank
+    for(i=0;i<startingWord.length;i++){
+        if(!(letterBank.includes(startingWord[i]))) {
+            letterBankincludesAll = false;
+        }
+    }
+
+    return letterBankincludesAll;
+
+
+}
+
 
 function displayResults(results) {
-    words = results[0];
-    guessResults = results[1]
+    let words = results[0];
+    let guessResults = results[1]
 
     const gameHistoryDiv = document.getElementById("gameHistory");
+    //Get rid of loading
+    const loading = document.getElementById('loader');
+    loading.remove();
+
 
     //Each Game
     for (game=0; game<words.length; game++) {
