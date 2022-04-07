@@ -9,7 +9,7 @@
     margin: auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -67,18 +67,13 @@
     text-align: center;
 }
 
-
-#guessBox .tile {
-    width: 45px;
-    height: 45px;
-}
-
 #guessBox {
     display: flex;
     flex-direction: column;
     gap: 10px;
     max-width: 300px;
     margin: auto;
+    padding-bottom: 15px;
 }
 
 #guessBox .line {

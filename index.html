@@ -3,20 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <script src="game.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+
+    <title>Startle - Guess the starting word!</title>
 </head>
 <body>
     <div class="container">
-        container
+        <h1>Startle</h1>
         <div id="gameHistory">
 
         </div>
         <div id="answer">
-            <h1></h1>
+            
             <div id="guessBox">
                 <div class="line">
                     <input type="text" id="char1" name="char1" class="tile guessChar" maxlength = "1">
