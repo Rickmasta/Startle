@@ -1,10 +1,19 @@
+body {
+    background-color: #9fa8a3;
+}
 .container {
 
     margin: auto;
     max-width: 1440px;
     justify-content: center;
+    
 }
 
+.container h1 {
+    text-align: center;
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 3px;
+}
 #gameHistory {
     margin: auto;
     display: flex;
@@ -91,4 +100,5 @@
     width: 100%;
     padding: 10px;
     margin: 10px 0;
+    min-height: 20px;
 }
