@@ -189,6 +189,10 @@ function displayResults(results) {
     let guessResults = results[1]
 
     const gameHistoryDiv = document.getElementById("gameHistory");
+    //Get rid of loading
+    const loading = document.getElementById('loader');
+    loading.remove();
+
 
     //Each Game
     for (game=0; game<words.length; game++) {
