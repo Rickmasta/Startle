@@ -14,6 +14,12 @@ body {
     font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
     letter-spacing: 2px;
 }
+
+#htpButton {
+    margin: auto;
+    text-align: center;
+}
+
 #gameHistory {
     margin: auto;
     display: flex;
