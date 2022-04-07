@@ -5,6 +5,15 @@ const answerListArray = ["aback","abase","abate","abbey","abbot","abhor","abide"
 const allPossibleWords = answerListArray.concat(allowedGuessesArray);
 const fullWordListArray = answerListArray;
 
+
+//Play the game and display results
+let gameResults = playGame();
+displayResults(gameResults);
+
+//Disable check answer button byefault
+enableCheckGuessButton(false);
+
+
 //Date
 const d = new Date();
 const date = `${d.getMonth}-${d.getDate}-${d.getFullYear}`;
@@ -264,9 +273,7 @@ $(document).ready(function(){
 
 
 
-//Play the game and display results
-let gameResults = playGame();
-displayResults(gameResults);
+
 
 
 
@@ -285,10 +292,19 @@ $(document).ready(function(){
 
 
 
+function enableCheckGuessButton(value=true) {
+    submitButton = document.getElementById("submit");
+    submitButton.disabled = !value;
+}
+
+
+
+
 //Check the player's answer on submit
 let playerTries = 0;
 submitButton = document.getElementById("submit");
 submitButton.onclick = function(){
+    submitButton.disabled = true;
     //Remove message if exsists
     const guessboxMsg = document.getElementById("guessBoxMsg");
     if (guessboxMsg) { guessboxMsg.remove(); }
@@ -298,16 +314,14 @@ submitButton.onclick = function(){
     playerGuess = []
     for(i=0;i<5;i++) {
         char = document.getElementById(`char${i}`).value;
-        playerGuess.push(char);
+        if(char !="") {playerGuess.push(char);}
     }
-    //Check if word is valid.
-    if (!(allPossibleWords.includes(playerGuess.join("")))) {
-        const guessBoxDiv = document.getElementById("guessBox");
-        const guessboxMsg = document.createElement('p');
-        guessboxMsg.textContent = `${playerGuess.join("")} is not a valid word.`;
-        guessboxMsg.id = 'guessBoxMsg'
-        guessboxMsg.style.color = 'red';
-        guessBoxDiv.prepend(guessboxMsg);
+    //Check if word is 5 chars.
+    if (playerGuess.length < 5) {
+        addMsgToGuessBox('Please enter a word with 5 characters.','red');
+    //Check if word is valid
+    } else if (!(allPossibleWords.includes(playerGuess.join("")))) {
+            addMsgToGuessBox(`${playerGuess.join("")} is not a valid word.`,'red');
     } else {
         playerTries++;
         for(i=0;i<5;i++) {
@@ -326,15 +340,21 @@ submitButton.onclick = function(){
         }
         //If they answered all correctly!
         if(numCorrect == 5) {
-            const guessBoxDiv = document.getElementById("guessBox");
-            const triesP = document.createElement('p');
-            triesP.textContent = `You won in ${playerTries} tries!`;
-            guessBoxDiv.prepend(triesP);
-
-            //Replace Submit with new game
+            addMsgToGuessBox(`You won in ${playerTries} tries!`);
+            //Remove submit button and change "Give up" button to "New Game"
             submitButton.remove();
             guessBoxDiv.appendChild(newGameButton);
             newGameButton.textContent= "New Game";
         }
     }
 };
+
+function addMsgToGuessBox(msg,color = 'black') {
+    const guessBoxDiv = document.getElementById("guessBox");
+    const guessboxMsg = document.createElement('p');
+    guessboxMsg.textContent = msg;
+    //guessboxMsg.textContent = `${playerGuess.join("")} is not a valid word.`;
+    guessboxMsg.id = 'guessBoxMsg'
+    guessboxMsg.style.color = color;
+    guessBoxDiv.prepend(guessboxMsg);
+}

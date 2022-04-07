@@ -44,11 +44,11 @@
             
             <div id="guessBox">
                 <div class="line">
-                    <input type="text" id="char0" class="tile guessChar" maxlength = "1" onkeydown="return /[a-z]/i.test(event.key)" required>
-                    <input type="text" id="char1" class="tile guessChar" maxlength = "1" onkeydown="return /[a-z]/i.test(event.key)" required>
-                    <input type="text" id="char2" class="tile guessChar" maxlength = "1" onkeydown="return /[a-z]/i.test(event.key)" required>
-                    <input type="text" id="char3" class="tile guessChar" maxlength = "1" onkeydown="return /[a-z]/i.test(event.key)" required>
-                    <input type="text" id="char4" class="tile guessChar" maxlength = "1" onkeydown="return /[a-z]/i.test(event.key)" required>
+                    <input type="text" id="char0" class="tile guessChar" maxlength = "1" onchange="enableCheckGuessButton()" onkeydown="return /[a-z]/i.test(event.key)" required>
+                    <input type="text" id="char1" class="tile guessChar" maxlength = "1" onchange="enableCheckGuessButton()" onkeydown="return /[a-z]/i.test(event.key)" required>
+                    <input type="text" id="char2" class="tile guessChar" maxlength = "1" onchange="enableCheckGuessButton()" onkeydown="return /[a-z]/i.test(event.key)" required>
+                    <input type="text" id="char3" class="tile guessChar" maxlength = "1" onchange="enableCheckGuessButton()" onkeydown="return /[a-z]/i.test(event.key)" required>
+                    <input type="text" id="char4" class="tile guessChar" maxlength = "1" onchange="enableCheckGuessButton()" onkeydown="return /[a-z]/i.test(event.key)" required>
                 </div>
                 <label for="feedback" class="form-check-label">
                     <input type="checkbox" id="feedback" name="feedback" value="yes" title="Display which are correct" class="form-check-input" checked>  Answer Feedback 
