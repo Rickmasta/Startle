@@ -73,7 +73,8 @@
     gap: 10px;
     max-width: 300px;
     margin: auto;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
+    padding-top: 25px;
 }
 
 #guessBox .line {
@@ -83,4 +84,11 @@
 #guessBox .tile {
     width: 45px;
     height: 45px;
+    background-color: black;
+}
+
+#guessBox button {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
 }

@@ -84,7 +84,7 @@ function selectNextWord(knowledge) {
                     w--;
                 }
             }
-            //Remove words that does not contain the letter
+            //Remove words that does not contain the letter at all
             for (w=0; w<wordSelection.length;w++) {
                 let wordToBeCheckedArray = wordSelection[w].split("");
                 if (! (wordToBeCheckedArray.includes(knowledge[x].letter))) {
@@ -217,5 +217,51 @@ $(document).ready(function(){
 });
 
 
+
+
+//Play the game and display results
 let gameResults = playGame();
 displayResults(gameResults);
+
+
+
+//Create new Game button
+const newGameButton = document.createElement('button');
+newGameButton.id = "newGame";
+newGameButton.textContent= "New Game";
+newGameButton.onclick = function(){
+   location.reload();
+};
+
+//Check the player's answer on submit
+let playerTries = 0;
+submitButton = document.getElementById("submit");
+submitButton.onclick = function(){
+    playerTries++;
+    let numCorrect = 0;
+    for(i=0;i<5;i++) {
+        char = document.getElementById(`char${i}`);
+        console.log(`char: ${char.value} startingWord Char: ${startingWord[i]}`);
+        if(char.value.toLowerCase() == startingWord[i]) { 
+            char.style.backgroundColor = "green";
+            numCorrect++;
+        } else {
+            char.style.backgroundColor = "red";
+        }
+        //Set back to black if feedback unchecked
+        if(!(document.getElementById("feedback").checked)){
+            char.style.backgroundColor = "black";
+        }    
+    }
+    //If they answered all correctly!
+    if(numCorrect == 5) {
+        const guessBoxDiv = document.getElementById("guessBox");
+        const triesP = document.createElement('p');
+        triesP.textContent = `You won in ${playerTries} tries!`;
+        guessBoxDiv.prepend(triesP);
+
+        //Replace Submit with new game
+        submitButton.remove();
+        guessBoxDiv.appendChild(newGameButton);
+    }
+};
