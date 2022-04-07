@@ -234,7 +234,7 @@ newGameButton.onclick = function(){
 
 //Add scroll to top on reload
 window.onload = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    window.scroll({ top: 0, left: 0, behavior: 'smooth' });
 }
 
 
