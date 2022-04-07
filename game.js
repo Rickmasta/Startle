@@ -229,9 +229,16 @@ displayResults(gameResults);
 const newGameButton = document.getElementById("newGame");
 
 newGameButton.onclick = function(){
-   window.scrollTo({ top: 0, behavior: 'smooth' })
-   location.reload();
+    location.reload();
 };
+
+//Add scroll to top on reload
+window.onload = function() {
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+}
+
+
+
 
 //Check the player's answer on submit
 let playerTries = 0;
