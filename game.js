@@ -226,9 +226,8 @@ displayResults(gameResults);
 
 
 //Create new Game button
-const newGameButton = document.createElement('button');
-newGameButton.id = "newGame";
-newGameButton.textContent= "New Game";
+const newGameButton = document.getElementById("newGame");
+
 newGameButton.onclick = function(){
    location.reload();
 };
@@ -263,5 +262,6 @@ submitButton.onclick = function(){
         //Replace Submit with new game
         submitButton.remove();
         guessBoxDiv.appendChild(newGameButton);
+        newGameButton.textContent= "New Game";
     }
 };
