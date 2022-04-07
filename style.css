@@ -1,0 +1,91 @@
+.container {
+
+    margin: auto;
+    max-width: 1440px;
+    justify-content: center;
+}
+
+#gameHistory {
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.game {
+    padding: 10px;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+    border-style: solid;
+    margin-bottom: 50px;
+    margin: 10px;
+}
+
+.line {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+    gap: 5px;
+    margin-bottom: 5px;
+}
+
+.tile {
+    flex:  0 0 auto;
+    width: 30px;
+    height: 30px;
+
+    border-style: solid;
+    border-color: gray;
+    margin: 2px;
+    background-color: green;
+    vertical-align: middle;
+}
+
+.word {
+    padding-top: 25px;
+    margin-top: auto;
+
+    border-style: solid;
+    text-align: center;
+}
+
+.word .tile  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.word p, .guessChar {
+    font-weight: bold;
+    font-family: 'Clear Sans', 'Helvetica Neue', Arial, sans-serif;
+    text-transform:uppercase;
+    color: white;
+    text-align: center;
+}
+
+
+#guessBox .tile {
+    width: 45px;
+    height: 45px;
+}
+
+#guessBox {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+    margin: auto;
+}
+
+#guessBox .line {
+    flex-wrap: nowrap;
+}
+
+#guessBox .tile {
+    width: 45px;
+    height: 45px;
+}
