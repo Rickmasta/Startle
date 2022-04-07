@@ -313,7 +313,7 @@ submitButton.onclick = function(){
     let numCorrect = 0;
     playerGuess = []
     for(i=0;i<5;i++) {
-        char = document.getElementById(`char${i}`).value;
+        let char = document.getElementById(`char${i}`).value;
         if(char !="") {playerGuess.push(char);}
     }
     //Check if word is 5 chars.
@@ -321,7 +321,7 @@ submitButton.onclick = function(){
         addMsgToGuessBox('Please enter a word with 5 characters.','red');
     //Check if word is valid
     } else if (!(allPossibleWords.includes(playerGuess.join("")))) {
-            addMsgToGuessBox(`${playerGuess.join("")} is not a valid word.`,'red');
+            addMsgToGuessBox(`${playerGuess.join("").toUpperCase()} is not a valid word.`,'red');
     } else {
         playerTries++;
         for(i=0;i<5;i++) {
