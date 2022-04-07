@@ -232,10 +232,10 @@ newGameButton.onclick = function(){
     location.reload();
 };
 
-//Add scroll to top on reload
-window.onload = function() {
+
+$(document).ready(function(){
     window.scroll({ top: 0, left: 0, behavior: 'smooth' });
-}
+});
 
 
 
