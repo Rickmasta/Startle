@@ -1,3 +1,7 @@
+
+/* Import bootstrap icons*/
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css");
+
 body {
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
@@ -60,6 +64,10 @@ body {
     margin: 2px;
     background-color: green;
     vertical-align: middle;
+}
+
+.highlight {
+    outline: 3px solid red;
 }
 
 .word {

@@ -7,6 +7,7 @@
     
     <!--Game & Site operation -->
     <script src="game.js?v=1" defer></script>
+    <script src="multipagemodal.js" defer></script>
     
     <!-- Smoothscroll -->
     <script src="smoothscroll.min.js" defer></script>
@@ -31,7 +32,7 @@
     <div class="container">
         <h1>Startle</h1>
         <div style="text-align:center;">
-        <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#howToPlayModal" id="htpButton">
+          <button type="button" class="btn btn-link" data-bs-toggle="modal" data-bs-target="#myModal" id="htpButton">
             How to play
           </button>
         </div>
@@ -84,6 +85,1169 @@
     </div>
 
 
+
+    <!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+      
+      <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title" id="myModalLabel">How to play</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        
+        <div class="modal-body">
+          <div class="modal-split">
+            <p>Everyone has their starting word.. including the computer! The same starting word was used for each game displayed. Use the 5 completed game results to determine what the starting word was.</p>
+            <p>You have an unlimited number of tries to guess the word. Try unchecking the answer feedbox option to make it a bit tougher!</p>
+            <p>Hint: The computer is pretty efficient at guessing new words. This means that:</p>
+            <ul>
+                <li>If the letter was green, future guesses will always repeat that letter in that location.</li>
+                <li>If the letter was yellow, future guesses will always include that letter, but not in that same spot.</li>
+                <li>If the letter was black, future guesses will not include that letter.</li>
+            </ul>
+            <p>Click next for an example of a playthrough.</p>
+          </div>
+          
+          <div class="modal-split">
+            <div class="container">
+                <p style="text-align: center;">Example</p>
+                <div id="gameHistory">
+                    <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">1</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile highlight" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile highlight" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;">
+                           </div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>R</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>O</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>O</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>M</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>Y</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">2</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile highlight" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile highlight" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>C</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>A</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>D</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>D</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>Y</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">3</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>V</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>N</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>U</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">4</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>S</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>H</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>A</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>V</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">5</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>F</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>A</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>L</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>S</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                        </div>
+                     </div>            
+                </div>
+                <hr>
+                <div id="answer">
+                    <div id="guessBox">
+                        <div class="line word">
+                            <div class="tile guessChar"">
+                                <p style="color: yellow;">C</p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p style="color: yellow;">O</p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p> </p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p> </p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p style="color: yellow;">Y</p>
+                            </div>
+                             
+                        </div>
+                    </div>
+                    <p>In this example, we can see that the starting word has 3 different characters in the correct space on the first guess. The O in the 2nd position of Game 1, the Y in the 5th position of game 1 & 2, and the C in the 1st position in game 1. We are already 3/5ths of the way to completing the challenge.</p>
+                </div>
+            </div>
+          </div>
+          
+          <div class="modal-split">
+            <div class="container">
+                <p style="text-align: center;">Example</p>
+                <div id="gameHistory">
+                    <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">1</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;">
+                           </div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>R</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>O</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>O</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>M</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>Y</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">2</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>C</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>A</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>D</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>D</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>Y</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">3</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile highlight" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>V</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>N</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>U</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">4</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile highlight" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>S</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>H</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>A</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>V</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">5</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile highlight" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>F</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>A</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>L</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>S</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                        </div>
+                     </div>            
+                </div>
+                <hr>
+                <div id="answer">
+                    <div id="guessBox">
+                        <div class="line word">
+                            <div class="tile guessChar"">
+                                <p>C</p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p>O</p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p> </p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p style="color: yellow;">E</p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p>Y</p>
+                            </div>
+                             
+                        </div>
+                    </div>
+                    <p>Now we need to resolve the yellow characters. Yellow means that these characters are included in the word, but not in the correct spot. If we take a notice at the game history, you'll notice that the letter in position 4 is present in games 3, 4, and 5. The only letter that appears in all 3 games is the letter <strong>E</strong>.</p>
+                </div>
+            </div>
+          </div>
+
+          <div class="modal-split">
+            <div class="container">
+                <p style="text-align: center;">Example</p>
+                <div id="gameHistory">
+                    <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">1</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;">
+                           </div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>R</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>O</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>O</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>M</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>Y</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">2</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>C</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>A</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>D</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>D</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>Y</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">3</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile highlight" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>V</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>N</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>U</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">4</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile highlight" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>S</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>H</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>A</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>V</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="game">
+                        <div class="line">
+                            <p style="color: white; margin: auto;">5</p>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: black;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: yellow;"></div>
+                           <div class="tile" style="background-color: black;"></div>
+                        </div>
+                        <div class="line">
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                           <div class="tile" style="background-color: green;"></div>
+                        </div>
+                        <div class="line word">
+                           <div class="tile" style="background-color: green;">
+                              <p>F</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>A</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>L</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>S</p>
+                           </div>
+                           <div class="tile" style="background-color: green;">
+                              <p>E</p>
+                           </div>
+                        </div>
+                     </div>            
+                </div>
+                <hr>
+                <div id="answer">
+                    <div id="guessBox">
+                        <div class="line word">
+                            <div class="tile guessChar"">
+                                <p>C</p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p>O</p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p style="color: yellow;">V</p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p>E</p>
+                            </div>
+                            <div class="tile guessChar"">
+                                <p>Y</p>
+                            </div>
+                             
+                        </div>
+                    </div>
+                </div>
+                <p>The last letter to figure out is in position 3. This letter is present in both Game 3 and Game 4. We can take the same approach by looking at the letters that these games have in common. Both games have the letters <strong>E</strong> & <strong>V</strong>. We already know that E is in position 4, and "COEEY" is not a word. That leaves us with one option: <strong>V</strong>.</p>
+            </div>
+        </div>
+
+            <div class="modal-split">
+                <div class="container">
+                    <p style="text-align: center;">Example</p>
+                    <div id="gameHistory">
+                        <div class="game">
+                            <div class="line">
+                                <p style="color: white; margin: auto;">1</p>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: black;">
+                               </div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line word">
+                               <div class="tile" style="background-color: green;">
+                                  <p>R</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>O</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>O</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>M</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>Y</p>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="game">
+                            <div class="line">
+                                <p style="color: white; margin: auto;">2</p>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line word">
+                               <div class="tile" style="background-color: green;">
+                                  <p>C</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>A</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>D</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>D</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>Y</p>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="game">
+                            <div class="line">
+                                <p style="color: white; margin: auto;">3</p>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line word">
+                               <div class="tile" style="background-color: green;">
+                                  <p>V</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>E</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>N</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>U</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>E</p>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="game">
+                            <div class="line">
+                                <p style="color: white; margin: auto;">4</p>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line word">
+                               <div class="tile" style="background-color: green;">
+                                  <p>S</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>H</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>A</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>V</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>E</p>
+                               </div>
+                            </div>
+                         </div>
+                         <div class="game">
+                            <div class="line">
+                                <p style="color: white; margin: auto;">5</p>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: black;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: yellow;"></div>
+                               <div class="tile" style="background-color: black;"></div>
+                            </div>
+                            <div class="line">
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                               <div class="tile" style="background-color: green;"></div>
+                            </div>
+                            <div class="line word">
+                               <div class="tile" style="background-color: green;">
+                                  <p>F</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>A</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>L</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>S</p>
+                               </div>
+                               <div class="tile" style="background-color: green;">
+                                  <p>E</p>
+                               </div>
+                            </div>
+                         </div>            
+                    </div>
+                    <hr>
+                    <div id="answer">
+                        <div id="guessBox">
+                            <div class="line word">
+                                <div class="tile guessChar" style="background-color: green;">
+                                    <p>C</p>
+                                </div>
+                                <div class="tile guessChar" style="background-color: green;">
+                                    <p>O</p>
+                                </div>
+                                <div class="tile guessChar" style="background-color: green;">
+                                    <p style">V</p>
+                                </div>
+                                <div class="tile guessChar" style="background-color: green;">
+                                    <p>E</p>
+                                </div>
+                                <div class="tile guessChar" style="background-color: green;">
+                                    <p>Y</p>
+                                </div>
+                                 
+                            </div>
+                        </div>
+                    </div>
+                    <p>Congrats! You've completed your first game! These were just a few methods used to solve this challenge. You'll discover more as you play :) Though, not all games will be this easy! </p>
+                </div>                                
+        </div>
+  </div>
+        <div class="modal-footer">
+   <!--Nothing Goes Here but is needed! -->
+   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">I got it already</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
