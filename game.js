@@ -320,7 +320,7 @@ submitButton.onclick = function(){
     if (playerGuess.length < 5) {
         addMsgToGuessBox('Please enter a word with 5 characters.','red');
     //Check if word is valid
-    } else if (!(allPossibleWords.includes(playerGuess.join("")))) {
+    } else if (!(allPossibleWords.includes(playerGuess.join("").toLowerCase()))) {
             addMsgToGuessBox(`${playerGuess.join("").toUpperCase()} is not a valid word.`,'red');
     } else {
         playerTries++;
