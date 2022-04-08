@@ -67,7 +67,8 @@ body {
 }
 
 .highlight {
-    outline: 3px solid red;
+    border-color: red;
+    border-width: 3px;
 }
 
 .word {
